@@ -1,3 +1,5 @@
 [submodule "MP-SPDZ"]
 	path = MP-SPDZ
 	url = git@github.com:data61/MP-SPDZ.git
+	branch = master
+	ignore = dirty
