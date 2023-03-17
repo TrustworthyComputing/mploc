@@ -1,3 +1,9 @@
+# MP-SPDZ-related files
+Player-Data
+Programs/Bytecode
+Programs/Public-Input
+Programs/Schedules
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
