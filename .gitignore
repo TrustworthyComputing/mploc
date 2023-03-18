@@ -3,7 +3,8 @@ Player-Data
 Programs/Bytecode
 Programs/Public-Input
 Programs/Schedules
-netlists/*.txt
+Programs/EDIF/*.edif
+Programs/Verilog/*.v
 Programs/Circuits/*.txt
 
 # Byte-compiled / optimized / DLL files
