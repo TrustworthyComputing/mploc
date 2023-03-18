@@ -215,7 +215,10 @@ def main():
                 new_net = Net(word)
                 if line.find("[") != -1:
                     new_net.idx = int(line[line.find("[") + 1:line.find("]")])  # Get index out of name[index]
-                    gate_name = line[line.find('"') + 1:line.find("[")]         # Get name out of name[index]
+                    if line.find("$") != -1:
+                        gate_name = line[line.rfind('$') + 1:line.find("[")]    # Get name out of name[index]
+                    else:
+                        gate_name = line[line.find('"') + 1:line.find("[")]     # Get name out of name[index]
                     new_net.port = gate_name
                 net_list.append(new_net)
             elif instance_type == InstanceType.Net and (word == "Y" or word == "q" or word == "Q"):
