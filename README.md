@@ -25,6 +25,20 @@ cd ..
 ```
 
 ## Run
+
+### Generate Bristol Circuit
+```shell
+yosys
+read_verilog verilog/4_bit_adder.v
+synth
+abc -g XOR,AND
+write_edif netlists/4_bit_adder.edif
+exit
+```
+```shell
+python src/edif2bristol.py --edif netlists/4_bit_adder.edif --out netlists/4_bit_adder.txt
+```
+
 ### Prepare the Player Data
 From the MP-SPDZ directory run:
 ```shell

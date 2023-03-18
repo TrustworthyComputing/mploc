@@ -3,6 +3,7 @@ Player-Data
 Programs/Bytecode
 Programs/Public-Input
 Programs/Schedules
+netlists/*.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
