@@ -1,0 +1,9 @@
+from Compiler.circuit import Circuit
+
+sb4 = sbits.get_type(4)
+adder = Circuit('4_bit_adder')
+a, b = [sbitvec(sb4.get_input_from(i)) for i in (0, 1)]
+
+print_ln('Player 0 input: %s', a.elements()[0].reveal())
+print_ln('Player 1 input: %s', b.elements()[0].reveal())
+print_ln('Result %s', adder(a, b).elements()[0].reveal()) 

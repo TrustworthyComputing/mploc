@@ -4,6 +4,7 @@ Programs/Bytecode
 Programs/Public-Input
 Programs/Schedules
 netlists/*.txt
+Programs/Circuits/*.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

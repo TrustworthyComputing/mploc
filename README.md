@@ -12,7 +12,7 @@ git clone --recurse-submodules git@github.com:jimouris/crispy-broccoli.git
 ```shell
 sudo apt-get install automake build-essential clang cmake git libboost-dev \
     libboost-thread-dev libntl-dev libsodium-dev libssl-dev libtool m4 python3 \
-    texinfo yasm
+    texinfo yasm yosys
 ```
 
 ### Build MP-SPDZ
@@ -27,16 +27,19 @@ cd ..
 ## Run
 
 ### Generate Bristol Circuit
+Create the EDIF files with yosys:
 ```shell
-yosys
-read_verilog verilog/4_bit_adder.v
-synth
-abc -g XOR,AND
-write_edif netlists/4_bit_adder.edif
-exit
+$ yosys
+yosys> read_verilog verilog/4_bit_adder.v
+yosys> synth
+yosys> abc -g XOR,AND
+yosys> write_edif netlists/4_bit_adder.edif
+yosys> exit
 ```
+
+Convert the edif file to a Bristol fashion circuit:
 ```shell
-python src/edif2bristol.py --edif netlists/4_bit_adder.edif --out netlists/4_bit_adder.txt
+python src/edif2bristol.py --edif netlists/4_bit_adder.edif --out Programs/Circuits/4_bit_adder.txt
 ```
 
 ### Prepare the Player Data
@@ -48,6 +51,6 @@ echo 2 0 > Player-Data/Input-P1-0
 ```
 
 ```shell
-./MP-SPDZ/compile.py adder4
-./MP-SPDZ/Scripts/semi.sh adder4
+./MP-SPDZ/compile.py 4_bit_adder
+./MP-SPDZ/Scripts/semi.sh 4_bit_adder
 ```
