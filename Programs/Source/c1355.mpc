@@ -1,0 +1,9 @@
+from Compiler.circuit import Circuit
+
+sb41 = sbits.get_type(41)
+circ = Circuit('c1355')
+a = sbitvec(sb41(0x3203))
+
+result = circ(a)
+
+print_ln('Result %s', result.elements()[0].reveal()) 

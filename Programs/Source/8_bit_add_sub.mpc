@@ -1,0 +1,20 @@
+from Compiler.circuit import Circuit
+
+sb8 = sbits.get_type(8)
+circ = Circuit('8_bit_add_sub')
+
+x = sbitvec(sb8(3))
+y = sbitvec(sb8(5))
+
+print_ln('Player 0 input: %s', x.elements()[0].reveal())
+print_ln('Player 1 input: %s', y.elements()[0].reveal())
+
+# Compute y+x and y-x
+res = circ(x, y)
+
+print_ln('diff  %s%s%s%s%s%s%s%s',
+    res.v[15].reveal(), res.v[14].reveal(), res.v[13].reveal(), res.v[12].reveal(),
+    res.v[11].reveal(), res.v[10].reveal(), res.v[9].reveal(), res.v[8].reveal()) 
+print_ln('sum %s%s%s%s%s%s%s%s',
+    res.v[7].reveal(), res.v[6].reveal(), res.v[5].reveal(), res.v[4].reveal(),
+    res.v[3].reveal(), res.v[2].reveal(), res.v[1].reveal(), res.v[0].reveal()) 

@@ -1,0 +1,11 @@
+from Compiler.circuit import Circuit
+
+sb4 = sbits.get_type(5)
+circ = Circuit('c17')
+a = sbitvec(sb4.get_input_from(0))
+
+print_ln('In:  %s%s%s%s%s', a.v[4].reveal(), a.v[3].reveal(), a.v[2].reveal(), 
+         a.v[1].reveal(), a.v[0].reveal()) 
+
+res = circ(a)
+print_ln('Out:  %s%s', res.v[1].reveal(), res.v[0].reveal())

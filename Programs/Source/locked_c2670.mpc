@@ -1,0 +1,25 @@
+from Compiler.circuit import Circuit
+
+sb64 = sbits.get_type(64)
+sb27 = sbits.get_type(27)
+circ = Circuit('locked_c2670')
+
+# Get LL key from party 0
+ll_key_0 = sbitvec(sb64.get_input_from(0))
+ll_key_1 = sbitvec(sb64.get_input_from(0))
+
+# Get inputs from party 1
+test_vec_0 = sbitvec(sb64.get_input_from(1))
+test_vec_1 = sbitvec(sb64.get_input_from(1))
+test_vec_2 = sbitvec(sb27.get_input_from(1))
+
+print_ln('Logic locking key [0 : 64]: %s', ll_key_0.elements()[0].reveal().bit_decompose())
+print_ln('Logic locking key [64:128]: %s', ll_key_1.elements()[0].reveal().bit_decompose())
+
+print_ln('Test vectors : %s', test_vec_0.elements()[0].reveal().bit_decompose())
+print_ln('Test vectors : %s', test_vec_1.elements()[0].reveal().bit_decompose())
+print_ln('Test vectors : %s', test_vec_2.elements()[0].reveal().bit_decompose())
+
+result = circ(ll_key_0, ll_key_1, test_vec_0, test_vec_1, test_vec_2)
+
+print_ln('Out %s', result.elements()[0].reveal().bit_decompose())
