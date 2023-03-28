@@ -1,10 +1,12 @@
-<h1 align="center">Crispy Broccoli <a href="https://github.com/jimouris/crispy-broccoli/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg"></a> </h1>
+<h1 align="center">MPloC <a href="https://github.com/jimouris/mploc/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg"></a> </h1>
 
-<!-- <p align="center">
-    <img src="./logos/t2-logo.png" height="20%" width="20%">
-</p> -->
+<p align="center">
+    <img src="./logos/mploc.jpg" height="90%" width="90%">
+</p>
 
 ## Overview
+TODO: write an overview here ...
+
 Transform Verilog (2005) code into ["Bristol Fashion"](https://homes.esat.kuleuven.be/~nsmart/MPC/) MPC Circuits and run them using [MP-SPDZ](https://github.com/data61/MP-SPDZ).
 
 
@@ -18,7 +20,7 @@ sudo apt-get install automake build-essential clang cmake git libboost-dev \
 
 Clone this repository:
 ```shell
-git clone --recurse-submodules git@github.com:jimouris/crispy-broccoli.git
+git clone --recurse-submodules git@github.com:jimouris/mploc.git
 ```
 
 ### Build MP-SPDZ
