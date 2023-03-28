@@ -13,6 +13,9 @@ def parse_args():
     parser = argparse.ArgumentParser(description='EDIF parser')
     parser.add_argument('--edif', help='path to EDIF file (.edif)', required=True)
     parser.add_argument('--out', help='path to output file', required=False)
+    parser.add_argument('--batch', help='use this argument to convert multiple \
+                        1-bit inputs and outputs to packed 64-bit inputs and \
+                        outputs', action=argparse.BooleanOptionalAction)
     args = parser.parse_args()
     input_file = args.edif
     if not args.edif.endswith(".edif"):
@@ -26,7 +29,8 @@ def parse_args():
         output_file = input_file[:-5] + '.out'
     else:
         output_file = args.out
-    return input_file, output_file
+    batch_io = False if args.batch is None else True
+    return input_file, output_file, batch_io
 
 class Port:
     def __init__(self, name, direction, length):
@@ -73,7 +77,7 @@ class Net:
         self.right.append(right_gate)
 
 def main():
-    input_file, output_file = parse_args()
+    input_file, output_file, batch_io = parse_args()
     edif_file = open(input_file, "r")
 
     flag = False
@@ -345,29 +349,39 @@ def main():
     bristol_str.append(preamble)
 
     # "[NUM INPUTS] [WORDSIZE 1] ... [WORDSIZE N]"
-    if num_inputs % 64:
-        preamble = str(num_inputs//64+1)
+    if batch_io:
+        if num_inputs % 64:
+            preamble = str(num_inputs//64+1)
+        else:
+            preamble = str(num_inputs//64)
+        cnt = num_inputs
+        while cnt >= 64:
+            preamble = preamble + ' 64'
+            cnt -= 64
+        if cnt:
+            preamble = preamble + " " + str(cnt)
     else:
-        preamble = str(num_inputs//64)
-    cnt = num_inputs
-    while cnt >= 64:
-        preamble = preamble + ' 64'
-        cnt -= 64
-    if cnt:
-        preamble = preamble + " " + str(cnt)
+        preamble = str(len(input_port_len))
+        for i in input_port_len:
+            preamble = preamble + " " + str(i)
     bristol_str.append(preamble)
 
     # "[NUM OUTPUTS] [WORDSIZE 1] ... [WORDSIZE N]"
-    if num_outputs % 64:
-        preamble = str(num_outputs//64+1)
+    if batch_io:
+        if num_outputs % 64:
+            preamble = str(num_outputs//64+1)
+        else:
+            preamble = str(num_outputs//64)
+        cnt = num_outputs
+        while cnt >= 64:
+            preamble = preamble + ' 64'
+            cnt -= 64
+        if cnt:
+            preamble = preamble + " " + str(cnt)
     else:
-        preamble = str(num_outputs//64)
-    cnt = num_outputs
-    while cnt >= 64:
-        preamble = preamble + ' 64'
-        cnt -= 64
-    if cnt:
-        preamble = preamble + " " + str(cnt)
+        preamble = str(len(output_port_len))
+        for i in output_port_len:
+            preamble = preamble + " " + str(i)
     bristol_str.append(preamble)
     bristol_str.append('')
 
