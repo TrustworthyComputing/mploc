@@ -1,14 +1,35 @@
-<h1 align="center">MPloC <a href="https://github.com/jimouris/mploc/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg"></a> </h1>
+<h1 align="center">MPloC: Privacy-Preserving IP Verification using Logic Locking and Secure Multiparty Computation <a href="https://github.com/jimouris/mploc/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg"></a> </h1>
 
 <p align="center">
     <img src="./logos/mploc.jpg" height="90%" width="90%">
 </p>
 
 ## Overview
-TODO: write an overview here ...
+Combine logic locking with secure multiparty computation for privacy-preserving intellectual property verification.
+Transform Verilog (2005) code (i.e., locked netlists) into ["Bristol Fashion"](https://homes.esat.kuleuven.be/~nsmart/MPC/) MPC Circuits and run them using [MP-SPDZ](https://github.com/data61/MP-SPDZ).
 
-Transform Verilog (2005) code into ["Bristol Fashion"](https://homes.esat.kuleuven.be/~nsmart/MPC/) MPC Circuits and run them using [MP-SPDZ](https://github.com/data61/MP-SPDZ).
 
+### How to cite this work
+The SoK outlining this framework will appear in 2023 IEEE 29th International Symposium on On-Line Testing and Robust System Design [(IOLTS)](https://orion.polito.it/iolts/iolts2023) (the preprint can be accessed
+[here](https://eprint.iacr.org/2023/511)) and [here](https://jimouris.github.io/publications/mouris2023mploc.pdf).
+You can cite this article as follows:
+
+```
+@INPROCEEDINGS{IOLTS:Mouris23mploc,
+  author    = "Dimitris Mouris and
+               Charles Gouert and
+               Nektarios Georgios Tsoutsos",
+  booktitle =  "2023 IEEE 29th International Symposium on On-Line Testing 
+                and Robust System Design (IOLTS)",
+  title     =  "{MP$\ell\circ$C: Privacy-Preserving IP Verification using
+                Logic Locking and Secure Multiparty Computation}",
+  year      =  "2023",
+  volume    =  "",
+  number    =  "",
+  pages     =  "1-7",
+  doi       =  ""
+}
+```
 
 ## Install
 ### Prerequisites
